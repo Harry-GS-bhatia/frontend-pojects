@@ -1,0 +1,44 @@
+<html>
+   <head>
+      <link rel="stylesheet" href="css/styles.css">
+      <link rel="stylesheet" href="css/font-awesome.min.css">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Google Maps</title>
+      <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script defer src="scripts/lib/knockout-3.2.0.js"></script>
+      </script>
+   </head>
+   <body>
+
+     <article class="wrapper">
+           <section class="sidebar">
+             <span class="abs-heading-buttons" title="Show Markers"><i id="button-1" data-bind="event:{click:showListings}" class="fa fa-thumb-tack fa-2x head--font--button" aria-hidden="true"></i></span><span title="Hide Markers"><i id="button-2" data-bind="event:{click:hideListings}" class="fa fa-trash fa-2x head--font--button" aria-hidden="true"></i></span>
+             <button id="button--draw" data-bind="event:{click: toggleDrawing}">Draw</button>
+             <div id="button--search" data-bind="event:{click: findArea}">
+                <button>Search</button>
+             </div>
+             <input id="inputArea" type="text" class="form-control" data-bind="value:check, valueUpdate:'afterkeydown',event:{keyup:filterList}" placeholder="What places are you looking for?">
+             <ul class="list-group" data-bind="foreach:markers">
+                <div data-bind="visible:visibility,event:{'click':$parent.selectDatMarker}">
+                   <div>
+                      <button data-bind="text:title"></button>
+                   </div>
+                </div>
+             </ul>
+             <img src="" alt="Image of a Hotel" class="restaurant-img" data-bind="attr:{src:imageSRC}">
+             <span class="Rightie" data-bind="text:ratings"></span>
+           </section>
+
+           <div id="map">
+
+           </div>
+         </article>
+       </body>
+      <script type="text/javascript">
+         function Error(){alert("Something went wrong. Please check your connection and try again later.");}
+      </script>
+      <script defer src="scripts/app.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=AIzaSyAHriYM2IxW9_7zeUIK3N3aRNc0BoitQ2Q&callback=initMap" onerror="Error()" async defer></script>
+   </body>
+</html>
